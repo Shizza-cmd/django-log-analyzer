@@ -1,4 +1,3 @@
-import pytest
 from reports.handlers_report import HandlersReport
 
 
