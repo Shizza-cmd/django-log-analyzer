@@ -13,5 +13,6 @@ def get_report_class(name: str):
         "handlers": HandlersReport
     }
     if name not in mapping:
-        raise ValueError(f"Unsupported report type: {name}")
+        supported_types = ", ".join(mapping.keys())
+        raise ValueError(f"Unsupported report type: {name}. Supported types: {supported_types}")
     return mapping[name]

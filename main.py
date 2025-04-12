@@ -6,18 +6,32 @@ from reports.base import BaseReport
 
 
 def main():
-    args = parse_args()
-    validate_files(args.log_paths)
-    report_cls = get_report_class(args.report_name)
+    try:
+        args = parse_args()
 
-    with ProcessPoolExecutor() as executor:
-        results = list(executor.map(parse_log_file, args.log_paths))
+        try:
+            validate_files(args.log_paths)
+        except FileNotFoundError as e:
+            print(f"Error: {e}")
+            return
 
-    report: BaseReport = report_cls()
-    for parsed_data in results:
-        report.update(parsed_data)
+        try:
+            report_cls = get_report_class(args.report_name)
+        except ValueError as e:
+            print(f"Error: {e}")
+            return
 
-    report.display()
+        with ProcessPoolExecutor() as executor:
+            results = list(executor.map(parse_log_file, args.log_paths))
+
+        report: BaseReport = report_cls()
+        for parsed_data in results:
+            report.update(parsed_data)
+
+        report.display()
+
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 
 if __name__ == "__main__":
