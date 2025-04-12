@@ -1,0 +1,11 @@
+INFO 2024-03-01 10:00:00,001 django.request path=/api/items
+INFO 2024-03-01 10:00:01,002 django.request path=/api/items
+DEBUG 2024-03-01 10:00:02,003 django.request path=/api/items
+ERROR 2024-03-01 10:00:03,004 django.request path=/api/items
+
+WARNING 2024-03-01 10:01:00,005 django.request path=/api/status
+INFO 2024-03-01 10:01:01,006 django.request path=/api/status
+
+INFO 2024-03-01 10:02:00,007 django.request path=/auth/login
+ERROR 2024-03-01 10:02:01,008 django.request path=/auth/login
+CRITICAL 2024-03-01 10:02:02,009 django.request path=/auth/login

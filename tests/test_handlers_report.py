@@ -14,4 +14,4 @@ def test_report_aggregation():
     assert report.data["/a"]["INFO"] == 5
     assert report.data["/a"]["DEBUG"] == 1
     assert report.data["/b"]["ERROR"] == 5
-    assert report.total == 5 + 1 + 5
+    assert report.total == 11

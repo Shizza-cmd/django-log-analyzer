@@ -13,7 +13,7 @@ def main():
     with ProcessPoolExecutor() as executor:
         results = list(executor.map(parse_log_file, args.log_paths))
 
-    report = report_cls()
+    report: BaseReport = report_cls()
     for parsed_data in results:
         report.update(parsed_data)
 
